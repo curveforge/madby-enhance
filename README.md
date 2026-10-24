@@ -10,7 +10,6 @@
 | 隐藏外部链接 | 清空 `ExternalUrls`（IMDb / TMDB / Trakt 等） |
 | 隐藏工作室 | 清空 `Studios`（制片 / 发行方一行） |
 | 隐藏标签 | 清空 `Tags` / `TagItems`（客户端「按标签筛选」也会变空） |
-| 隐藏相关推荐 | 清空 `/Items/{id}/Similar` 的返回，详情页「相关推荐 / 更多类似」为空 |
 
 所有开关默认开启，改完即时生效（配置页勾选会自动保存）。只影响展示，不修改媒体库数据。
 
@@ -20,7 +19,6 @@
 
 - `Emby.Server.Implementations.Dto.DtoService.AttachPeople` → 过滤 `People`
 - `Emby.Server.Implementations.Dto.DtoService.AttachBasicFields` → 清空外链 / 工作室 / 标签
-- `Emby.Api.Library.LibraryService.GetSimilarItemsResult` → 清空相关推荐结果
 
 因此**依赖 Madby 插件已安装并启用**（它提供 Harmony 运行库）；没有 Madby 时页面能打开，但补丁不会生效。
 

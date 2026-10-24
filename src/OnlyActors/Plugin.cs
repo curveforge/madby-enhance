@@ -21,7 +21,6 @@ namespace OnlyActors
         public bool HideExternalUrls { get; set; } = true;
         public bool HideStudios { get; set; } = true;
         public bool HideTags { get; set; } = true;
-        public bool HideSimilar { get; set; } = true;
     }
 
     public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
@@ -119,13 +118,6 @@ namespace OnlyActors
                 var postfix = Activator.CreateInstance(methodType, typeof(PeopleFilter).GetMethod(nameof(PeopleFilter.Postfix)));
                 patch.Invoke(harmony, new object[] { target, null, postfix, null, null });
 
-                var similarTarget = FindSimilarTarget();
-                if (similarTarget != null)
-                {
-                    var sp = Activator.CreateInstance(methodType, typeof(SimilarFilter).GetMethod(nameof(SimilarFilter.Postfix)));
-                    patch.Invoke(harmony, new object[] { similarTarget, null, sp, null, null });
-                }
-
                 var fieldsTarget = AccessToolsMethod(target.DeclaringType, "AttachBasicFields");
                 if (fieldsTarget != null)
                 {
@@ -143,17 +135,6 @@ namespace OnlyActors
                 var e = ex.InnerException ?? ex;
                 PatchStatus = "patch-error:" + e.GetType().Name + ":" + e.Message;
             }
-        }
-
-        private static MethodBase FindSimilarTarget()
-        {
-            var t = Type.GetType("Emby.Api.Library.LibraryService, Emby.Api", false)
-                    ?? AppDomain.CurrentDomain.GetAssemblies()
-                        .Select(a => a.GetType("Emby.Api.Library.LibraryService", false))
-                        .FirstOrDefault(x => x != null);
-            if (t == null) return null;
-            return t.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                    .FirstOrDefault(m => m.Name == "GetSimilarItemsResult");
         }
 
         public static MethodBase AccessToolsMethod(Type t, string name)
@@ -185,26 +166,6 @@ namespace OnlyActors
                     dto.Tags = new string[0];
                 if (cfg.HideTags && dto.TagItems != null && dto.TagItems.Length > 0)
                     dto.TagItems = new NameLongIdPair[0];
-            }
-            catch { }
-        }
-    }
-
-    public static class SimilarFilter
-    {
-        public static int Calls;
-
-        public static void Postfix(ref QueryResult<BaseItemDto> __result)
-        {
-            try
-            {
-                if (Plugin.Instance?.Configuration?.HideSimilar != true) return;
-                if (__result == null) return;
-                var n = Interlocked.Increment(ref Calls);
-                if (n <= 3) Plugin.Log("similar call " + n + " items=" + (__result.Items == null ? -1 : __result.Items.Length));
-                if (__result.Items != null && __result.Items.Length == 0) return;
-                __result.Items = new BaseItemDto[0];
-                __result.TotalRecordCount = 0;
             }
             catch { }
         }

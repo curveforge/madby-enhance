@@ -18,7 +18,6 @@ define(['baseView', 'loading', 'emby-button', 'emby-checkbox', 'emby-scroller'],
         setChk(page, '.chkHideExternalUrls', config.HideExternalUrls);
         setChk(page, '.chkHideStudios', config.HideStudios);
         setChk(page, '.chkHideTags', config.HideTags);
-        setChk(page, '.chkHideSimilar', config.HideSimilar);
         loading.hide();
     }
 
@@ -31,7 +30,6 @@ define(['baseView', 'loading', 'emby-button', 'emby-checkbox', 'emby-scroller'],
             config.HideExternalUrls = val(form, '.chkHideExternalUrls');
             config.HideStudios = val(form, '.chkHideStudios');
             config.HideTags = val(form, '.chkHideTags');
-            config.HideSimilar = val(form, '.chkHideSimilar');
             ApiClient.updatePluginConfiguration(pluginId, config).then(function (result) {
                 Dashboard.processPluginConfigurationUpdateResult(result);
                 loading.hide();
@@ -46,7 +44,6 @@ define(['baseView', 'loading', 'emby-button', 'emby-checkbox', 'emby-scroller'],
             config.HideExternalUrls = val(form, '.chkHideExternalUrls');
             config.HideStudios = val(form, '.chkHideStudios');
             config.HideTags = val(form, '.chkHideTags');
-            config.HideSimilar = val(form, '.chkHideSimilar');
             return ApiClient.updatePluginConfiguration(pluginId, config);
         });
     }
