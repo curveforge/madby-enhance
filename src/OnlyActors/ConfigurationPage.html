@@ -1,0 +1,54 @@
+<div is="emby-scroller" class="view flex flex-direction-column scrollFrameY flex-grow" data-horizontal="false" data-forcescrollbar="true" data-centerfocus="true" data-bindheader="true" data-controller="__plugin/MadbyEnhance3js" data-title="Madby增强" data-require="emby-button,emby-checkbox">
+    <div class="scrollSlider flex-grow flex-direction-column padded-left padded-left-page padded-right padded-top-page padded-bottom-page" style="overflow-y:auto;">
+        <form class="auto-center">
+            <div>
+                <div class="sectionTitleContainer">
+                    <h2 class="sectionTitle">人物过滤</h2>
+                </div>
+                <div class="checkboxContainer checkboxContainer-withDescription">
+                    <label class="emby-checkbox-label">
+                        <input is="emby-checkbox" type="checkbox" class="chkOnlyActors" />
+                        <span>只显示演员（含剧集演员）</span>
+                    </label>
+                    <div class="fieldDescription">详情页人物列表只留演员，隐藏导演、编剧、制片等职员。</div>
+                </div>
+
+                <div class="sectionTitleContainer" style="margin-top:1.5em;">
+                    <h2 class="sectionTitle">信息过滤</h2>
+                </div>
+                <div class="checkboxContainer checkboxContainer-withDescription">
+                    <label class="emby-checkbox-label">
+                        <input is="emby-checkbox" type="checkbox" class="chkHideExternalUrls" />
+                        <span>隐藏外部链接</span>
+                    </label>
+                    <div class="fieldDescription">去掉 IMDb / TMDB / Trakt 外链行；Yamby 自带外链，不受此项影响。</div>
+                </div>
+                <div class="checkboxContainer checkboxContainer-withDescription">
+                    <label class="emby-checkbox-label">
+                        <input is="emby-checkbox" type="checkbox" class="chkHideStudios" />
+                        <span>隐藏工作室</span>
+                    </label>
+                    <div class="fieldDescription">去掉「制片 / 发行方」一行。</div>
+                </div>
+                <div class="checkboxContainer checkboxContainer-withDescription">
+                    <label class="emby-checkbox-label">
+                        <input is="emby-checkbox" type="checkbox" class="chkHideTags" />
+                        <span>隐藏标签</span>
+                    </label>
+                    <div class="fieldDescription">去掉标签行；客户端的「按标签筛选」也会变空。</div>
+                </div>
+                <div class="checkboxContainer checkboxContainer-withDescription">
+                    <label class="emby-checkbox-label">
+                        <input is="emby-checkbox" type="checkbox" class="chkHideSimilar" />
+                        <span>隐藏相关推荐</span>
+                    </label>
+                    <div class="fieldDescription">详情页底部的「相关推荐 / 更多类似」不再返回任何条目（服务端接口置空，所有客户端同时生效）。</div>
+                </div>
+            </div>
+
+            <div style="position:sticky;bottom:0;padding:1.5em 0 1.5em 0;background:inherit;">
+                <button is="emby-button" type="submit" class="raised button-submit block"><span>保存</span></button>
+            </div>
+        </form>
+    </div>
+</div>
