@@ -1,4 +1,5 @@
-<div class="view flex flex-direction-column padded-left padded-left-page padded-right padded-top-page padded-bottom-page" data-bindheader="true" data-controller="__plugin/MadbyEnhance3js" data-title="Madby增强" data-require="emby-button,emby-checkbox" style="overflow:hidden;">
+<div is="emby-scroller" class="view flex flex-direction-column scrollFrameY flex-grow" data-horizontal="false" data-centerfocus="true" data-bindheader="true" data-controller="__plugin/MadbyEnhance3js" data-title="Madby增强" data-require="emby-button,emby-checkbox">
+    <div class="scrollSlider flex-grow flex-direction-column padded-left padded-left-page padded-right padded-top-page padded-bottom-page">
         <form class="auto-center">
             <div>
                 <div class="sectionTitleContainer">
@@ -38,8 +39,9 @@
                 </div>
             </div>
 
-            <div style="margin-top:3em;padding-bottom:1.5em;">
+            <div style="margin-top:2.5em;">
                 <button is="emby-button" type="submit" class="raised button-submit block"><span>保存</span></button>
             </div>
         </form>
+    </div>
 </div>
