@@ -1,5 +1,8 @@
-<div is="emby-scroller" class="view flex flex-direction-column scrollFrameY flex-grow" data-horizontal="false" data-centerfocus="true" data-bindheader="true" data-controller="__plugin/MadbyEnhance3js" data-title="Madby增强" data-require="emby-button,emby-checkbox">
-    <div class="scrollSlider flex-grow flex-direction-column padded-left padded-left-page padded-right padded-top-page padded-bottom-page">
+<style>
+    .madbyEnhancePage .scrollSlider{overflow:hidden!important;touch-action:none!important;}
+</style>
+<div is="emby-scroller" class="view flex flex-direction-column scrollFrameY flex-grow madbyEnhancePage" data-horizontal="false" data-centerfocus="true" data-bindheader="true" data-controller="__plugin/MadbyEnhance3js" data-title="Madby增强" data-require="emby-button,emby-checkbox">
+    <div class="scrollSlider flex-grow flex-direction-column padded-left padded-left-page padded-right padded-top-page padded-bottom-page" style="overflow:hidden;touch-action:none;">
         <form class="auto-center">
             <div>
                 <div class="sectionTitleContainer">
